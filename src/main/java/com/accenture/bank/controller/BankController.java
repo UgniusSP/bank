@@ -11,16 +11,16 @@ import org.springframework.web.client.RestTemplate;
 @AllArgsConstructor
 public class BankController {
 
-    private final RestTemplate restTemplate;
+    private RestTemplate restTemplate;
 
     @GetMapping("/internal")
     public String getBank() {
-        return "Welcome to the bank";
+        return "Welcome from bank of Ugnius!";
     }
 
     @GetMapping("/external")
     public String getBankExternal() {
-        return restTemplate.getForObject("https://bank-e1n6.onrender.com/api/v1/bank", String.class);
+        return restTemplate.getForObject("https://bank-8uae.onrender.com/api/v1/bank/internal", String.class);
     }
 
 }
