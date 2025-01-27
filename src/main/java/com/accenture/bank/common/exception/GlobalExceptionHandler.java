@@ -42,6 +42,25 @@ public class GlobalExceptionHandler {
         return buildErrorResponse(HttpStatus.BAD_REQUEST, ex.getMessage());
     }
 
+    @ExceptionHandler
+    public ResponseEntity<Map<String, String>> handleEmailAlreadyInUseException(EmailAlreadyInUseException ex) {
+        return buildErrorResponse(HttpStatus.BAD_REQUEST, ex.getMessage());
+    }
+
+    @ExceptionHandler ResponseEntity<Map<String, String>> handleIllegalStateException(IllegalStateException ex) {
+        return buildErrorResponse(HttpStatus.BAD_REQUEST, ex.getMessage());
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<Map<String, String>> handleInvalidFundsException(InvalidFundsException ex) {
+        return buildErrorResponse(HttpStatus.FORBIDDEN, ex.getMessage());
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<Map<String, String>> handleInvalidDepositException(InvalidDepositException ex) {
+        return buildErrorResponse(HttpStatus.BAD_REQUEST, ex.getMessage());
+    }
+
     private ResponseEntity<Map<String, String>> buildErrorResponse(HttpStatus status, String message) {
         Map<String, String> response = new HashMap<>();
         response.put("error", message);
