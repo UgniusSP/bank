@@ -3,6 +3,7 @@ package com.accenture.bank.controller;
 import com.accenture.bank.dto.TransactionRequestDto;
 import com.accenture.bank.dto.TransactionResponseDto;
 import com.accenture.bank.service.TransactionService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +20,7 @@ public class TransactionController {
 
     @PostMapping
     public ResponseEntity<TransactionResponseDto> createTransaction(
-            @RequestBody TransactionRequestDto transactionRequestDto) {
+            @Valid @RequestBody TransactionRequestDto transactionRequestDto) {
         return ResponseEntity.ok(transactionService.createTransaction(transactionRequestDto));
     }
 

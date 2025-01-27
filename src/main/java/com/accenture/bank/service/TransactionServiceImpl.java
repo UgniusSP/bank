@@ -51,7 +51,7 @@ public class TransactionServiceImpl implements TransactionService {
             throw new InvalidTransactionException("Sender and receiver cannot be the same");
         }
         if (transactionRequestDto.getAmount() == null || transactionRequestDto.getAmount().compareTo(BigDecimal.ZERO) <= 0) {
-            throw new InvalidTransactionException("Amount must be greater than 0");
+            throw new InvalidTransactionException("Amount must not be empty or be greater than 0");
         }
     }
 
