@@ -11,10 +11,11 @@ import java.time.LocalDateTime;
 @Configuration
 public class TransactionMapper {
 
-    public Transaction toTransaction(TransactionRequestDto transactionRequestDto, User sender, User receiver) {
+    public Transaction toTransaction(TransactionRequestDto transactionRequestDto, User sender) {
         return Transaction.builder()
                 .sender(sender)
-                .receiver(receiver)
+                .senderAccountNumber(sender.getAccountNumber())
+                .receiverAccountNumber(transactionRequestDto.getReceiverAccountNumber())
                 .amount(transactionRequestDto.getAmount())
                 .createdAt(LocalDateTime.now())
                 .build();
@@ -24,8 +25,8 @@ public class TransactionMapper {
         return TransactionResponseDto.builder()
                 .id(transaction.getId())
                 .email(transaction.getSender().getEmail())
-                .senderId(transaction.getSender().getId())
-                .receiverId(transaction.getReceiver().getId())
+                .senderAccountNumber(transaction.getSender().getAccountNumber())
+                .receiverAccountNumber(transaction.getReceiverAccountNumber())
                 .amount(transaction.getAmount())
                 .createdAt(transaction.getCreatedAt())
                 .build();

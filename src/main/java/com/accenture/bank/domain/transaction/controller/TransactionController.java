@@ -18,9 +18,14 @@ public class TransactionController {
 
     private final TransactionService transactionService;
 
-    @PostMapping
+    @PostMapping("/internal")
     public ResponseEntity<TransactionResponseDto> createTransaction(
             @Valid @RequestBody TransactionRequestDto transactionRequestDto) {
+        return ResponseEntity.ok(transactionService.createTransaction(transactionRequestDto));
+    }
+
+    @PostMapping("/send")
+    public ResponseEntity<TransactionResponseDto> sendMoney(@Valid @RequestBody TransactionRequestDto transactionRequestDto) {
         return ResponseEntity.ok(transactionService.createTransaction(transactionRequestDto));
     }
 

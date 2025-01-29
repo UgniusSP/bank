@@ -33,6 +33,8 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    private String accountNumber;
+
     private String email;
 
     private String password;
@@ -59,4 +61,5 @@ public class User implements UserDetails {
     public String getUsername() {
         return email;
     }
+
 }

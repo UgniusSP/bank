@@ -19,8 +19,8 @@ public class TransactionResponseDto {
 
     private UUID id;
     private String email;
-    private UUID senderId;
-    private UUID receiverId;
+    private String senderAccountNumber;
+    private String receiverAccountNumber;
     private BigDecimal amount;
     private LocalDateTime createdAt;
 

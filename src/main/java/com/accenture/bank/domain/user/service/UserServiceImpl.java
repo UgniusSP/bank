@@ -32,22 +32,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserResponseWithAccountAndBalanceDto getUserWithAccountAndBalanceById(UUID id) {
-        validateUserId(id);
-
-        var user = userDao.getUserById(id);
-
-        return UserResponseWithAccountAndBalanceDto.builder()
-                .id(user.getId())
-                .balance(user.getBalance())
-                .build();
-    }
-
-    @Override
     public List<UserResponseWithAccountAndBalanceDto> getAllUsersWithAccountAndBalance() {
         return userDao.getAllUsers().stream()
                 .map(user -> UserResponseWithAccountAndBalanceDto.builder()
-                        .id(user.getId())
+                        .accountNumber(user.getAccountNumber())
                         .balance(user.getBalance())
                         .build())
                 .toList();

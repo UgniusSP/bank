@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -16,7 +15,7 @@ import java.util.UUID;
 @Builder
 public class UserResponseWithAccountAndBalanceDto {
 
-    private UUID id;
+    private String accountNumber;
     private BigDecimal balance;
 
 }

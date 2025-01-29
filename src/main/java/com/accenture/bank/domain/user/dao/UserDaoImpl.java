@@ -28,6 +28,16 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    public User getUserByAccountNumber(String accountNumber) {
+        if(accountNumber == null) {
+            throw new InvalidUserIdException("Account number cannot be null");
+        }
+
+        return userRepository.findByAccountNumber(accountNumber)
+                .orElseThrow(() -> new InvalidUserException("User not found"));
+    }
+
+    @Override
     public void saveUser(User user) {
         if(user == null) {
             throw new InvalidUserException("User cannot be null");

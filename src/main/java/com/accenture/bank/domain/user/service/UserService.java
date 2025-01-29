@@ -9,7 +9,6 @@ import java.util.UUID;
 public interface UserService {
 
     UserResponseDto getUserById(UUID id);
-    UserResponseWithAccountAndBalanceDto getUserWithAccountAndBalanceById(UUID id);
     List<UserResponseWithAccountAndBalanceDto> getAllUsersWithAccountAndBalance();
 
 }

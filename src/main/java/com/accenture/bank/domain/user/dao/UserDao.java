@@ -9,6 +9,7 @@ import java.util.UUID;
 public interface UserDao {
 
     User getUserById(UUID id);
+    User getUserByAccountNumber(String accountNumber);
     void saveUser(User user);
     Optional<User> getUserByEmail(String email);
     List<User> getAllUsers();

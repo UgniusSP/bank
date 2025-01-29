@@ -33,8 +33,9 @@ public class Transaction {
     @ManyToOne
     private User sender;
 
-    @ManyToOne
-    private User receiver;
+    private String senderAccountNumber;
+
+    private String receiverAccountNumber;
 
     private LocalDateTime createdAt;
 
